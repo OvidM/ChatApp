@@ -9390,11 +9390,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ovidiu/Documents/Projects/Auth/Auth.csproj",
+      "projectUniqueName": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.csproj",
       "projectName": "Auth",
-      "projectPath": "/home/ovidiu/Documents/Projects/Auth/Auth.csproj",
+      "projectPath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.csproj",
       "packagesPath": "/home/ovidiu/.nuget/packages/",
-      "outputPath": "/home/ovidiu/Documents/Projects/Auth/obj/",
+      "outputPath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ovidiu/.nuget/NuGet/NuGet.Config"
