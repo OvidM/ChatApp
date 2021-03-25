@@ -97,7 +97,7 @@ using MudBlazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Shared/NavMenu.razor"
+#line 24 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Shared/NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

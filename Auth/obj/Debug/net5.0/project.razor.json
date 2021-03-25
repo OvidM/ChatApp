@@ -12,39 +12,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 1132936201,
-        "Kind": "Components.Component",
-        "Name": "Auth.Pages.FetchData",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": 1086306845,
-        "Kind": "Components.Component",
-        "Name": "Auth.Pages.FetchData",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Auth.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Pages.FetchData",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -50214025,
         "Kind": "Components.Component",
         "Name": "Auth.Pages.Index",
@@ -74,39 +41,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Auth.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 864546733,
-        "Kind": "Components.Component",
-        "Name": "Auth.Pages.Counter",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": 1124123299,
-        "Kind": "Components.Component",
-        "Name": "Auth.Pages.Counter",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Auth.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Pages.Counter",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -60662,11 +60596,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/FetchData.razor",
-      "TargetPath": "Pages\\FetchData.razor",
-      "FileKind": "component"
-    },
-    {
       "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\GenerateRecoveryCodes.cshtml",
       "FileKind": "mvc"
@@ -60770,11 +60699,6 @@
       "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\DeletePersonalData.cshtml",
       "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/Counter.razor",
-      "TargetPath": "Pages\\Counter.razor",
-      "FileKind": "component"
     },
     {
       "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml",
