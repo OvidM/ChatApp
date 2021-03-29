@@ -145,21 +145,81 @@ using Microsoft.AspNetCore.Identity;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 4 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/ChatDisplayComponent.razor"
+#line 42 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/ChatDisplayComponent.razor"
        
-    [CascadingParameter(Name = "_messages")]
+    [CascadingParameter(Name = "chatName")]
+    public string chatName {get; set;}
     public List<MessageModel> _messages { get; set; }
-    private string username;
-
+    private bool _isChatting = true;
+    private string _username;
+    private string _newMessage;
+    private List<string> chatNames = new List<string>();
+    private string _hubUrl;
+    private HubConnection _hubConnection;
     protected override async Task OnInitializedAsync()
     {
-        username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+        if(_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+        {
+            _username =_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            _messages = messageService.GetMessages(_username, chatName);
+            
+            await Task.Delay(1);
 
+            string baseUrl = navigationManager.BaseUri;
+
+            _hubUrl = baseUrl.TrimEnd('/') + BlazorChatSampleHub.HubUrl;
+
+            _hubConnection = new HubConnectionBuilder()
+                .WithUrl(_hubUrl)
+                .Build();
+
+            _hubConnection.On<string, string>("Broadcast", BroadcastMessage);
+
+            await _hubConnection.StartAsync();
+            await SendAsync($"[Notice] {_username} joined chat room.");
+        }
     }
+    
+    //protected async Task OnCircuitClosedAsync()
+    //{
+    //    await SendAsync($"[Notice] {_username} left chat room.");
+    //}
+
+    private void BroadcastMessage(string name, string message)
+    {
+        bool isMine = name.Equals(_username, StringComparison.OrdinalIgnoreCase);
+
+        _messages.Add(new MessageModel(name, message, isMine));
+
+        StateHasChanged();
+    }
+
+    private async Task DisconnectAsync()
+    {
+        await SendAsync($"[Notice] {_username} left chat room.");
+
+        await _hubConnection.StopAsync();
+        await _hubConnection.DisposeAsync();
+
+        _hubConnection = null;
+        navigationManager.NavigateTo("/");
+    }
+
+    private async Task SendAsync(string message)
+    {
+        if (!string.IsNullOrWhiteSpace(message))
+        {
+            await _hubConnection.SendAsync("Broadcast", _username, message);
+            messageService.AddMessage(new MessageModel(_username, message, true), chatName);
+            _newMessage = string.Empty;
+        }
+    }
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageService messageService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpContextAccessor _httpContextAccessor { get; set; }

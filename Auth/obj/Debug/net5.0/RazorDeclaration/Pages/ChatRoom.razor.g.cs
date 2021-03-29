@@ -137,7 +137,6 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/chatroom")]
     public partial class ChatRoom : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -292,6 +291,7 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageService messageService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpContextAccessor _httpContextAccessor { get; set; }

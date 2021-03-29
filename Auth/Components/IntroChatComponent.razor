@@ -1,14 +1,65 @@
-﻿
+﻿@page "/chatroom"
+
 <MudText Typo="Typo.h3">Welcome to Ovidiu's Chat App</MudText>
+@if (!toRedirect)
+{
+    <MudText Typo="Typo.h4">Please Choose the Chat You want to join</MudText>
+
+    <MudPaper Width="300px">
+        <MudList Clickable="true">
+            <MudListSubheader>
+                Chats You Joined
+            </MudListSubheader>
+            @foreach (var chat in Chats)
+            {
+                <MudListItem @onclick="() => RedirectToDisplay(chat)" Icon="@Icons.Material.Filled.Send">
+                    @chat
+                </MudListItem>
+            }
+        </MudList>
+    </MudPaper>
+    <MudCard>
+        <MudCardContent>
+            <MudForm>
+                <MudTextField @bind-Value="nameToRdir" T="string" Label="ChatName" Required="true"
+                    RequiredError="Chat Name is required!" />
+            </MudForm>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto"
+                @onclick="() => CreateChat(nameToRdir)">Create Chat</MudButton>
+        </MudCardActions>
+    </MudCard>
+}
+else
+{
+    <CascadingValue Value="nameToRdir" Name="chatName">
+    <ChatDisplayComponent />
+</CascadingValue>
+}
 
 @code {
     public string username;
-    [CascadingParameter(Name = "Chats")]
-    public List<ChatModel> Chats { get; set; }
+    private List<string> Chats { get; set; }
+    public string nameToRdir;
+    private bool toRedirect = false;
     protected override async Task OnInitializedAsync()
     {
         username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+        Chats = chatService.GetChats();
+        foreach (var name in Chats)
+        {
+            System.Console.WriteLine(name);
+        }
     }
-
-
+    private void RedirectToDisplay(string chatName)
+    {
+        nameToRdir = chatName;
+        toRedirect = true;
+    }
+    private void CreateChat(string chatName)
+    {
+        nameToRdir = chatService.CreateChat(chatName);
+        RedirectToDisplay(chatName);
+    }
 }
