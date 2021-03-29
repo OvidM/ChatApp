@@ -78,39 +78,6 @@
         }
       },
       {
-        "HashCode": 951373890,
-        "Kind": "Components.Component",
-        "Name": "Auth.Pages.ChatRoom",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ChatRoom"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Pages.ChatRoom"
-        }
-      },
-      {
-        "HashCode": 1586566503,
-        "Kind": "Components.Component",
-        "Name": "Auth.Pages.ChatRoom",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Auth.Pages.ChatRoom"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Pages.ChatRoom",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -50214025,
         "Kind": "Components.Component",
         "Name": "Auth.Pages.Index",
@@ -60905,11 +60872,6 @@
       "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\ShowRecoveryCodes.cshtml",
       "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor",
-      "TargetPath": "Pages\\ChatRoom.razor",
-      "FileKind": "component"
     },
     {
       "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml",

@@ -185,6 +185,7 @@ using Microsoft.AspNetCore.Identity;
             __builder.CloseElement();
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageService messageService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpContextAccessor _httpContextAccessor { get; set; }
