@@ -1060,3 +1060,7 @@
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/ref/Auth.dll
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Auth.pdb
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Auth.genruntimeconfig.cache
+/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/RazorDeclaration/Components/IntroChatComponent.razor.g.cs
+/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Razor/Components/IntroChatComponent.razor.g.cs
+/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/RazorDeclaration/Components/ChatDisplayComponent.razor.g.cs
+/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Razor/Components/ChatDisplayComponent.razor.g.cs

@@ -4,7 +4,6 @@
 namespace Auth.Shared
 {
     #line hidden
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -53,35 +52,84 @@ using Microsoft.AspNetCore.Components.Web;
 #nullable disable
 #nullable restore
 #line 7 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Microsoft.AspNetCore.SignalR.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 8 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using Microsoft.JSInterop;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using Auth;
+using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 10 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using Auth.Shared;
+using Auth;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 11 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Auth.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
 using MudBlazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using System;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using System.Security.Claims;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using System.Data.SQLite;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 17 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Auth.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Microsoft.AspNetCore.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
@@ -137,6 +185,10 @@ using MudBlazor;
             __builder.CloseElement();
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpContextAccessor _httpContextAccessor { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private UserManager<IdentityUser> userManager { get; set; }
     }
 }
 #pragma warning restore 1591

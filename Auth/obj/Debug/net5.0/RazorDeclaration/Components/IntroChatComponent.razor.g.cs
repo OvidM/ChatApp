@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Auth.Shared
+namespace Auth.Components
 {
     #line hidden
     using System.Collections.Generic;
@@ -137,13 +137,29 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
-    public partial class MainLayout : LayoutComponentBase
+    public partial class IntroChatComponent : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 4 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/IntroChatComponent.razor"
+       
+    public string username;
+    [CascadingParameter(Name = "Chats")]
+    public List<ChatModel> Chats { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+    }
+
+
+
+#line default
+#line hidden
+#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpContextAccessor _httpContextAccessor { get; set; }

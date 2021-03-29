@@ -7,7 +7,6 @@
 namespace Auth.Pages
 {
     #line hidden
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -56,84 +55,84 @@ using Microsoft.AspNetCore.Components.Web;
 #nullable disable
 #nullable restore
 #line 7 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using Microsoft.AspNetCore.Components.Web.Virtualization;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 8 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using Microsoft.JSInterop;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 9 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using Auth;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 10 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using Auth.Shared;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 11 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
-using MudBlazor;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
-using Microsoft.AspNetCore.Http;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
-using Microsoft.AspNetCore.Identity;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
-using Microsoft.AspNetCore.Mvc;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 6 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
 using Microsoft.AspNetCore.SignalR.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
+#line 8 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Microsoft.AspNetCore.Components.Web.Virtualization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Microsoft.JSInterop;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Auth;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 11 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Auth.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using MudBlazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using System;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
 using System.Security.Claims;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
+#line 16 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
 using System.Data.SQLite;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
-using System.Data;
+#line 17 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Auth.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 18 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Microsoft.AspNetCore.Http;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
@@ -147,13 +146,13 @@ using System.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 48 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
+#line 55 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Pages/ChatRoom.razor"
        
     private bool _isChatting = true;
     private string _username;
     private string _newMessage;
     private List<Message> _messages = new List<Message>();
-
+    private List<string> chatNames = new List<string>();
     private string _hubUrl;
     private HubConnection _hubConnection;
     protected override async Task OnInitializedAsync()
@@ -161,9 +160,12 @@ using System.Data;
         if(_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
         {
             _username =_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-            _isChatting = true;
             _messages = GetMessages();
-            
+            chatNames = chatService.GetChats();
+            foreach(var name in chatNames)
+            {
+                System.Console.WriteLine(name);
+            }
             await Task.Delay(1);
 
             string baseUrl = navigationManager.BaseUri;
@@ -180,6 +182,7 @@ using System.Data;
             await SendAsync($"[Notice] {_username} joined chat room.");
         }
     }
+    
     //protected async Task OnCircuitClosedAsync()
     //{
     //    await SendAsync($"[Notice] {_username} left chat room.");
@@ -196,21 +199,18 @@ using System.Data;
 
     private async Task DisconnectAsync()
     {
-        if (_isChatting)
-        {
-            await SendAsync($"[Notice] {_username} left chat room.");
+        await SendAsync($"[Notice] {_username} left chat room.");
 
-            await _hubConnection.StopAsync();
-            await _hubConnection.DisposeAsync();
+        await _hubConnection.StopAsync();
+        await _hubConnection.DisposeAsync();
 
-            _hubConnection = null;
-            navigationManager.NavigateTo("/");
-        }
+        _hubConnection = null;
+        navigationManager.NavigateTo("/");
     }
 
     private async Task SendAsync(string message)
     {
-        if (_isChatting && !string.IsNullOrWhiteSpace(message))
+        if (!string.IsNullOrWhiteSpace(message))
         {
             await _hubConnection.SendAsync("Broadcast", _username, message);
             AddMessage(new Message(_username, message, true));
@@ -238,7 +238,7 @@ using System.Data;
     private int ExecuteWrite(string query, Dictionary<string, object> args)
     {
         int numberOfRowsAffected;
-        using (var con = new SQLiteConnection("Data Source = Messages.db"))
+        using (var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db"))
         {
             con.Open();
             using (var cmd = new SQLiteCommand(query, con))
@@ -250,31 +250,6 @@ using System.Data;
                 numberOfRowsAffected = cmd.ExecuteNonQuery();
             }
             return numberOfRowsAffected;
-        }
-    }
-    private DataTable Execute(string query, Dictionary<string, object> args)
-    {
-        if (string.IsNullOrEmpty(query.Trim()))
-            return null;
-
-        using (var con = new SQLiteConnection("Data Source=test.db"))
-        {
-            con.Open();
-            using (var cmd = new SQLiteCommand(query, con))
-            {
-                foreach (KeyValuePair<string, object> entry in args)
-                {
-                    cmd.Parameters.AddWithValue(entry.Key, entry.Value);
-                }
-
-                var da = new SQLiteDataAdapter(cmd);
-
-                var dt = new DataTable();
-                da.Fill(dt);
-
-                da.Dispose();
-                return dt;
-            }
         }
     }
     private int AddMessage(Message message)
@@ -291,7 +266,7 @@ using System.Data;
     {
         List<Message> messages = new List<Message>();
         const string query = "SELECT * FROM (SELECT * FROM Messages ORDER BY Field1 DESC LIMIT 10) Var1 ORDER BY Field1 ASC;";
-        using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Auth/Messages.db");
+        using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
         con.Open();
         using var cmd = new SQLiteCommand(query, con);
         using SQLiteDataReader rdr = cmd.ExecuteReader();
@@ -317,6 +292,7 @@ using System.Data;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IHttpContextAccessor _httpContextAccessor { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private UserManager<IdentityUser> userManager { get; set; }

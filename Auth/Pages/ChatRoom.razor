@@ -1,16 +1,23 @@
 @page "/chatroom"
-@inject NavigationManager navigationManager
-@using Microsoft.AspNetCore.Http
-@using Microsoft.AspNetCore.Identity
-@using Microsoft.AspNetCore.Mvc
-@using Microsoft.AspNetCore.SignalR.Client
-@using System.Security.Claims
-@using System.Data.SQLite
-@using System.Data
-@inject UserManager<IdentityUser> userManager
-@inject IHttpContextAccessor _httpContextAccessor
-@inject NavigationManager navigationManager
+
 <h1>Welcome to Ovidiu's ChatRoom</h1>
+
+<MudPaper Width="300px">
+    
+    <MudList Clickable="true">
+        <MudListSubheader>
+            Chats You Joined
+        </MudListSubheader>
+        @foreach(var name in chatNames)
+        {
+            <MudListItem Icon="@Icons.Material.Filled.Send">
+                @name
+            </MudListItem>
+        }
+        
+    </MudList>
+</MudPaper>
+
 <hr />
 <AuthorizeView>
     <Authorized>
@@ -50,7 +57,7 @@
     private string _username;
     private string _newMessage;
     private List<Message> _messages = new List<Message>();
-
+    private List<string> chatNames = new List<string>();
     private string _hubUrl;
     private HubConnection _hubConnection;
     protected override async Task OnInitializedAsync()
@@ -58,9 +65,12 @@
         if(_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
         {
             _username =_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-            _isChatting = true;
             _messages = GetMessages();
-            
+            chatNames = chatService.GetChats();
+            foreach(var name in chatNames)
+            {
+                System.Console.WriteLine(name);
+            }
             await Task.Delay(1);
 
             string baseUrl = navigationManager.BaseUri;
@@ -77,6 +87,7 @@
             await SendAsync($"[Notice] {_username} joined chat room.");
         }
     }
+    
     //protected async Task OnCircuitClosedAsync()
     //{
     //    await SendAsync($"[Notice] {_username} left chat room.");
@@ -93,21 +104,18 @@
 
     private async Task DisconnectAsync()
     {
-        if (_isChatting)
-        {
-            await SendAsync($"[Notice] {_username} left chat room.");
+        await SendAsync($"[Notice] {_username} left chat room.");
 
-            await _hubConnection.StopAsync();
-            await _hubConnection.DisposeAsync();
+        await _hubConnection.StopAsync();
+        await _hubConnection.DisposeAsync();
 
-            _hubConnection = null;
-            navigationManager.NavigateTo("/");
-        }
+        _hubConnection = null;
+        navigationManager.NavigateTo("/");
     }
 
     private async Task SendAsync(string message)
     {
-        if (_isChatting && !string.IsNullOrWhiteSpace(message))
+        if (!string.IsNullOrWhiteSpace(message))
         {
             await _hubConnection.SendAsync("Broadcast", _username, message);
             AddMessage(new Message(_username, message, true));
@@ -135,7 +143,7 @@
     private int ExecuteWrite(string query, Dictionary<string, object> args)
     {
         int numberOfRowsAffected;
-        using (var con = new SQLiteConnection("Data Source = Messages.db"))
+        using (var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db"))
         {
             con.Open();
             using (var cmd = new SQLiteCommand(query, con))
@@ -147,31 +155,6 @@
                 numberOfRowsAffected = cmd.ExecuteNonQuery();
             }
             return numberOfRowsAffected;
-        }
-    }
-    private DataTable Execute(string query, Dictionary<string, object> args)
-    {
-        if (string.IsNullOrEmpty(query.Trim()))
-            return null;
-
-        using (var con = new SQLiteConnection("Data Source=test.db"))
-        {
-            con.Open();
-            using (var cmd = new SQLiteCommand(query, con))
-            {
-                foreach (KeyValuePair<string, object> entry in args)
-                {
-                    cmd.Parameters.AddWithValue(entry.Key, entry.Value);
-                }
-
-                var da = new SQLiteDataAdapter(cmd);
-
-                var dt = new DataTable();
-                da.Fill(dt);
-
-                da.Dispose();
-                return dt;
-            }
         }
     }
     private int AddMessage(Message message)
@@ -188,7 +171,7 @@
     {
         List<Message> messages = new List<Message>();
         const string query = "SELECT * FROM (SELECT * FROM Messages ORDER BY Field1 DESC LIMIT 10) Var1 ORDER BY Field1 ASC;";
-        using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Auth/Messages.db");
+        using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
         con.Open();
         using var cmd = new SQLiteCommand(query, con);
         using SQLiteDataReader rdr = cmd.ExecuteReader();

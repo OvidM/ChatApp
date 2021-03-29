@@ -12,35 +12,68 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -50214025,
+        "HashCode": -2093549978,
         "Kind": "Components.Component",
-        "Name": "Auth.Pages.Index",
+        "Name": "Auth.Components.ChatDisplayComponent",
         "AssemblyName": "Auth",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Index"
+            "TagName": "ChatDisplayComponent"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Pages.Index"
+          "Common.TypeName": "Auth.Components.ChatDisplayComponent"
         }
       },
       {
-        "HashCode": 1515406782,
+        "HashCode": 1895927471,
         "Kind": "Components.Component",
-        "Name": "Auth.Pages.Index",
+        "Name": "Auth.Components.ChatDisplayComponent",
         "AssemblyName": "Auth",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Auth.Pages.Index"
+            "TagName": "Auth.Components.ChatDisplayComponent"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Pages.Index",
+          "Common.TypeName": "Auth.Components.ChatDisplayComponent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1281130615,
+        "Kind": "Components.Component",
+        "Name": "Auth.Components.IntroChatComponent",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "IntroChatComponent"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Components.IntroChatComponent"
+        }
+      },
+      {
+        "HashCode": -1296966542,
+        "Kind": "Components.Component",
+        "Name": "Auth.Components.IntroChatComponent",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Auth.Components.IntroChatComponent"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Components.IntroChatComponent",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -78,6 +111,39 @@
         }
       },
       {
+        "HashCode": -50214025,
+        "Kind": "Components.Component",
+        "Name": "Auth.Pages.Index",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Pages.Index"
+        }
+      },
+      {
+        "HashCode": 1515406782,
+        "Kind": "Components.Component",
+        "Name": "Auth.Pages.Index",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Auth.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1440444778,
         "Kind": "Components.Component",
         "Name": "Auth.App",
@@ -107,6 +173,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Auth.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -576457474,
+        "Kind": "Components.Component",
+        "Name": "Auth.Shared.LoginDisplay",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LoginDisplay"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Shared.LoginDisplay"
+        }
+      },
+      {
+        "HashCode": 1374791721,
+        "Kind": "Components.Component",
+        "Name": "Auth.Shared.LoginDisplay",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Auth.Shared.LoginDisplay"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Shared.LoginDisplay",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -160,72 +259,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Auth.Shared.SurveyPrompt",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -576457474,
-        "Kind": "Components.Component",
-        "Name": "Auth.Shared.LoginDisplay",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "LoginDisplay"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Shared.LoginDisplay"
-        }
-      },
-      {
-        "HashCode": 1374791721,
-        "Kind": "Components.Component",
-        "Name": "Auth.Shared.LoginDisplay",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Auth.Shared.LoginDisplay"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Shared.LoginDisplay",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1116753615,
-        "Kind": "Components.Component",
-        "Name": "Auth.Shared.NavMenu",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Shared.NavMenu"
-        }
-      },
-      {
-        "HashCode": -1547584911,
-        "Kind": "Components.Component",
-        "Name": "Auth.Shared.NavMenu",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Auth.Shared.NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Shared.NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -322,6 +355,39 @@
           "Runtime.Name": "Components.None",
           "Common.TypeName": "Auth.Shared.MainLayout.Body",
           "Components.IsSpecialKind": "Components.ChildContent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1116753615,
+        "Kind": "Components.Component",
+        "Name": "Auth.Shared.NavMenu",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Shared.NavMenu"
+        }
+      },
+      {
+        "HashCode": -1547584911,
+        "Kind": "Components.Component",
+        "Name": "Auth.Shared.NavMenu",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Auth.Shared.NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Shared.NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -60661,6 +60727,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/IntroChatComponent.razor",
+      "TargetPath": "Components\\IntroChatComponent.razor",
+      "FileKind": "component"
+    },
+    {
       "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Shared/NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
       "FileKind": "component"
@@ -60674,6 +60745,11 @@
       "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\Disable2fa.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/ChatDisplayComponent.razor",
+      "TargetPath": "Components\\ChatDisplayComponent.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor",

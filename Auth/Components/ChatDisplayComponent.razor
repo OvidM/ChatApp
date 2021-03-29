@@ -1,0 +1,14 @@
+﻿
+<h3>Components</h3>
+
+@code {
+    [CascadingParameter(Name = "_messages")]
+    public List<MessageModel> _messages { get; set; }
+    private string username;
+
+    protected override async Task OnInitializedAsync()
+    {
+        username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+
+    }
+}

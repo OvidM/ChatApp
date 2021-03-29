@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Auth.Areas.Identity;
 using Auth.Data;
 using MudBlazor.Services;
+using Auth.Services;
 
 namespace Auth
 {
@@ -41,6 +42,7 @@ namespace Auth
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddMudServices();
+            services.AddTransient<IChatService, ChatService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

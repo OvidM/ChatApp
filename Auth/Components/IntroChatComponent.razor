@@ -1,0 +1,14 @@
+﻿
+<MudText Typo="Typo.h3">Welcome to Ovidiu's Chat App</MudText>
+
+@code {
+    public string username;
+    [CascadingParameter(Name = "Chats")]
+    public List<ChatModel> Chats { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+    }
+
+
+}
