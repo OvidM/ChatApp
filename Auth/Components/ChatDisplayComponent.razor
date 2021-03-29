@@ -1,4 +1,5 @@
-﻿
+﻿@page "/chatroom/{chatName}"
+
 @if(_messages == null)
 {
     <MudText>Loading</MudText>
@@ -40,7 +41,7 @@ else
 
 
 @code {
-    [CascadingParameter(Name = "chatName")]
+    [Parameter]
     public string chatName {get; set;}
     public List<MessageModel> _messages { get; set; }
     private bool _isChatting = true;
@@ -51,8 +52,7 @@ else
     private HubConnection _hubConnection;
     protected override async Task OnInitializedAsync()
     {
-        if(_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-        {
+        
             _username =_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
             _messages = messageService.GetMessages(_username, chatName);
             
@@ -70,13 +70,7 @@ else
 
             await _hubConnection.StartAsync();
             await SendAsync($"[Notice] {_username} joined chat room.");
-        }
     }
-    
-    //protected async Task OnCircuitClosedAsync()
-    //{
-    //    await SendAsync($"[Notice] {_username} left chat room.");
-    //}
 
     private void BroadcastMessage(string name, string message)
     {
