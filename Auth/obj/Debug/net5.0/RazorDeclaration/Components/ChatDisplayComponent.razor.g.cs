@@ -137,6 +137,7 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/chatroom/{chatName}")]
     public partial class ChatDisplayComponent : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -145,9 +146,9 @@ using Microsoft.AspNetCore.Identity;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/ChatDisplayComponent.razor"
+#line 43 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/ChatDisplayComponent.razor"
        
-    [CascadingParameter(Name = "chatName")]
+    [Parameter]
     public string chatName {get; set;}
     public List<MessageModel> _messages { get; set; }
     private bool _isChatting = true;
@@ -156,13 +157,13 @@ using Microsoft.AspNetCore.Identity;
     private List<string> chatNames = new List<string>();
     private string _hubUrl;
     private HubConnection _hubConnection;
+    private int state;
     protected override async Task OnInitializedAsync()
     {
-        if(_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-        {
-            _username =_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+        
+            _username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
             _messages = messageService.GetMessages(_username, chatName);
-            
+            state = chatService.getState(chatName, _username);
             await Task.Delay(1);
 
             string baseUrl = navigationManager.BaseUri;
@@ -176,14 +177,13 @@ using Microsoft.AspNetCore.Identity;
             _hubConnection.On<string, string>("Broadcast", BroadcastMessage);
 
             await _hubConnection.StartAsync();
-            await SendAsync($"[Notice] {_username} joined chat room.");
-        }
+            if(state == 0)
+            {
+                chatService.addOrRemove(chatName, _username, "1");
+                await SendAsync($"[Notice] {_username} joined chat room.");
+            }
+                
     }
-    
-    //protected async Task OnCircuitClosedAsync()
-    //{
-    //    await SendAsync($"[Notice] {_username} left chat room.");
-    //}
 
     private void BroadcastMessage(string name, string message)
     {
@@ -196,6 +196,7 @@ using Microsoft.AspNetCore.Identity;
 
     private async Task DisconnectAsync()
     {
+        chatService.addOrRemove(chatName, _username, "0");
         await SendAsync($"[Notice] {_username} left chat room.");
 
         await _hubConnection.StopAsync();
