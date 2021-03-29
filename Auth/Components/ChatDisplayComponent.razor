@@ -44,10 +44,8 @@ else
     [Parameter]
     public string chatName {get; set;}
     public List<MessageModel> _messages { get; set; }
-    private bool _isChatting = true;
     private string _username;
-    private string _newMessage;
-    private List<string> chatNames = new List<string>();
+    private string _newMessage; 
     private string _hubUrl;
     private HubConnection _hubConnection;
     private int state;
