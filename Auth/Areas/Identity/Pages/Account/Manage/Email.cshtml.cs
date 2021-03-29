@@ -33,7 +33,7 @@ namespace Auth.Areas.Identity.Pages.Account.Manage
 
         public string Email { get; set; }
 
-        public bool IsEmailConfirmed { get; set; }
+        public bool IsEmailConfirmed = true;
 
         [TempData]
         public string StatusMessage { get; set; }
