@@ -7,7 +7,7 @@ namespace Auth.Services
 {
     public interface IMessageService
     {
-        int AddMessage(MessageModel message);
+        int AddMessage(MessageModel message, string chatName);
         int ExecuteWrite(string query, Dictionary<string, object> args);
         List<MessageModel> GetMessages(string _username);
         List<MessageModel> GetMessages(string _username, string chatName);
@@ -85,9 +85,9 @@ namespace Auth.Services
                 return numberOfRowsAffected;
             }
         }
-        public int AddMessage(MessageModel message)
+        public int AddMessage(MessageModel message, string chatName)
         {
-            const string query = "INSERT INTO Messages(Username, Message) VALUES(@Username, @Body)";
+            string query = "INSERT INTO " + chatName + "(Username, Message) VALUES(@Username, @Body)";
             var args = new Dictionary<string, object>
             {
                 {"@Username", message.Username},
@@ -95,5 +95,6 @@ namespace Auth.Services
             };
             return ExecuteWrite(query, args);
         }
+
     }
 }
