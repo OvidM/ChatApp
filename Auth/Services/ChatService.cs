@@ -14,9 +14,10 @@ namespace Auth.Services
 
     public class ChatService : IChatService
     {
-        List<string> chats = new List<string>();
+        List<string> chats;
         public List<string> GetChats()
         {
+            chats = new List<string>();
             const string query = "SELECT * FROM sqlite_master ORDER BY name;";
             using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
             con.Open();
