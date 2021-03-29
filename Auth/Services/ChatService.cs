@@ -5,6 +5,7 @@ namespace Auth.Services
 {
     public interface IChatService
     {
+        string CreateChat(string chatName);
         List<string> GetChats();
     }
 
@@ -24,6 +25,17 @@ namespace Auth.Services
                 chats.Add(rdr.GetString(1));
             }
             return chats;
+        }
+
+        public string CreateChat(string chatName)
+        {
+            string query = "CREATE TABLE " + chatName + "(Field1 INTEGER PRIMARY KEY AUTOINCREMENT, Username char(20), Message char(100))";
+            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
+            con.Open();
+            using var cmd = new SQLiteCommand(query, con);
+            cmd.ExecuteNonQuery();
+
+            return chatName;
         }
     }
 }
