@@ -42,8 +42,8 @@ namespace Auth
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddMudServices();
-            services.AddTransient<IChatService, ChatService>();
-            services.AddTransient<IMessageService, MessageService>();
+            services.AddSingleton<IChatService, ChatService>();
+            services.AddSingleton<IMessageService, MessageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
