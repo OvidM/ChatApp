@@ -19,7 +19,7 @@ namespace Auth.Services
         {
             chats = new List<string>();
             const string query = "SELECT * FROM sqlite_master ORDER BY name;";
-            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
+            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Messages.db");
             con.Open();
             using var cmd = new SQLiteCommand(query, con);
             using SQLiteDataReader rdr = cmd.ExecuteReader();
@@ -33,7 +33,7 @@ namespace Auth.Services
         public string CreateChat(string chatName, string username)
         {
             string query = "CREATE TABLE " + chatName + "(Field1 INTEGER PRIMARY KEY AUTOINCREMENT, Username char(20), Message char(100), MessageKey char(100), MessageIV char(100))";
-            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
+            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Messages.db");
             con.Open();
             using var cmd = new SQLiteCommand(query, con);
             cmd.ExecuteNonQuery();
@@ -44,7 +44,7 @@ namespace Auth.Services
         public void addToUser(string chatName, string username)
         {
             string query = "ALTER TABLE AspNetUsers ADD isIn" + chatName + " Integer;";
-            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.db");
+            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Auth.db");
             con.Open();
             using var cmd1 = new SQLiteCommand(query, con);
             cmd1.ExecuteNonQuery();
@@ -59,7 +59,7 @@ namespace Auth.Services
         public void addOrRemove(string chatName, string username, string toWhat)
         {
             string query = "UPDATE AspNetUsers SET isIn" + chatName + " = " + toWhat + " Where UserName = '" + username + "'";
-            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.db");
+            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Auth.db");
             con.Open();
             using var cmd = new SQLiteCommand(query, con);
             cmd.ExecuteNonQuery();
@@ -68,7 +68,7 @@ namespace Auth.Services
         public int getState(string chatName, string username)
         {
             string query = "Select isIn" + chatName + " From AspNetUsers Where UserName = '" + username + "'";
-            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.db");
+            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Auth.db");
             con.Open();
             using var cmd = new SQLiteCommand(query, con);
             using SQLiteDataReader rdr = cmd.ExecuteReader();

@@ -19,7 +19,7 @@ namespace Auth.Services
         {
             List<MessageModel> messages = new List<MessageModel>();
             const string query = "SELECT * FROM (SELECT * FROM Messages ORDER BY Field1 DESC LIMIT 10) Var1 ORDER BY Field1 ASC;";
-            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
+            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Messages.db");
             con.Open();
             using var cmd = new SQLiteCommand(query, con);
             using SQLiteDataReader rdr = cmd.ExecuteReader();
@@ -45,7 +45,7 @@ namespace Auth.Services
         {
             List<MessageModel> messages = new List<MessageModel>();
             string query = "SELECT * FROM (SELECT * FROM " + chatName + " ORDER BY Field1 DESC LIMIT 10) Var1 ORDER BY Field1 ASC;";
-            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
+            using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Messages.db");
             con.Open();
             using var cmd = new SQLiteCommand(query, con);
             using SQLiteDataReader rdr = cmd.ExecuteReader();
@@ -71,7 +71,7 @@ namespace Auth.Services
         public int ExecuteWrite(string query, Dictionary<string, object> args)
         {
             int numberOfRowsAffected;
-            using (var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db"))
+            using (var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Messages.db"))
             {
                 con.Open();
                 using (var cmd = new SQLiteCommand(query, con))
