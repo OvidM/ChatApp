@@ -977,7 +977,6 @@
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Auth.MvcApplicationPartsAssemblyInfo.cache
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Auth.RazorComponent.input.cache
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs
-/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/RazorDeclaration/Pages/ChatRoom.razor.g.cs
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/RazorDeclaration/Shared/LoginDisplay.razor.g.cs
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs
@@ -990,7 +989,6 @@
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Auth.TagHelpers.output.cache
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Auth.RazorCoreGenerate.cache
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Razor/App.razor.g.cs
-/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Razor/Pages/ChatRoom.razor.g.cs
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Razor/Shared/LoginDisplay.razor.g.cs
 /home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs

@@ -137,6 +137,13 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 20 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using System.Security.Cryptography;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/chatroom")]
     public partial class IntroChatComponent : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -146,35 +153,36 @@ using Microsoft.AspNetCore.Identity;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 41 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/IntroChatComponent.razor"
+#line 53 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Components/IntroChatComponent.razor"
        
     public string username;
-    private List<string> Chats { get; set; }
+    private List<string> Chats = new List<string>();
     public string nameToRdir;
     private bool toRedirect = false;
     protected override async Task OnInitializedAsync()
     {
-        username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
-        Chats = chatService.GetChats();
-        foreach (var name in Chats)
+        if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
         {
-            System.Console.WriteLine(name);
+            username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+            Chats = chatService.GetChats();
+            foreach (var name in Chats) System.Console.WriteLine(name);
         }
     }
     private void RedirectToDisplay(string chatName)
     {
         nameToRdir = chatName;
-        toRedirect = true;
+        navigationManager.NavigateTo("/chatroom/" + chatName);
     }
     private void CreateChat(string chatName)
     {
-        nameToRdir = chatService.CreateChat(chatName);
+        nameToRdir = chatService.CreateChat(chatName, username);
         RedirectToDisplay(chatName);
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IEncryptionService encryptionService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageService messageService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }

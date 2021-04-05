@@ -44,6 +44,7 @@ namespace Auth
             services.AddMudServices();
             services.AddSingleton<IChatService, ChatService>();
             services.AddSingleton<IMessageService, MessageService>();
+            services.AddSingleton<IEncryptionService, EncryptionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

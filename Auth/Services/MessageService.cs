@@ -27,13 +27,13 @@ namespace Auth.Services
             {
                 if (rdr.GetString(1) == _username)
                 {
-                    MessageModel message = new MessageModel(rdr.GetString(1), rdr.GetString(2), true);
+                    MessageModel message = new MessageModel(rdr.GetString(1), rdr.GetString(2), true, rdr.GetString(3), rdr.GetString(4));
                     Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetString(2)}");
                     messages.Add(message);
                 }
                 else
                 {
-                    MessageModel message = new MessageModel(rdr.GetString(1), rdr.GetString(2), false);
+                    MessageModel message = new MessageModel(rdr.GetString(1), rdr.GetString(2), false, rdr.GetString(3), rdr.GetString(4));
                     Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetString(2)}");
                     messages.Add(message);
                 }
@@ -53,13 +53,13 @@ namespace Auth.Services
             {
                 if (rdr.GetString(1) == _username)
                 {
-                    MessageModel message = new MessageModel(rdr.GetString(1), rdr.GetString(2), true);
+                    MessageModel message = new MessageModel(rdr.GetString(1), rdr.GetString(2), true, rdr.GetString(3), rdr.GetString(4));
                     Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetString(2)}");
                     messages.Add(message);
                 }
                 else
                 {
-                    MessageModel message = new MessageModel(rdr.GetString(1), rdr.GetString(2), false);
+                    MessageModel message = new MessageModel(rdr.GetString(1), rdr.GetString(2), false, rdr.GetString(3), rdr.GetString(4));
                     Console.WriteLine($"{rdr.GetInt32(0)} {rdr.GetString(1)} {rdr.GetString(2)}");
                     messages.Add(message);
                 }
@@ -87,11 +87,13 @@ namespace Auth.Services
         }
         public int AddMessage(MessageModel message, string chatName)
         {
-            string query = "INSERT INTO " + chatName + "(Username, Message) VALUES(@Username, @Body)";
+            string query = "INSERT INTO " + chatName + "(Username, Message, MessageKey, MessageIV) VALUES(@Username, @Body, @Key, @IV)";
             var args = new Dictionary<string, object>
             {
                 {"@Username", message.Username},
-                {"@Body", message.Body}
+                {"@Body", message.Body},
+                {"@Key", message.Key},
+                {"@IV", message.IV}
             };
             return ExecuteWrite(query, args);
         }

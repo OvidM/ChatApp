@@ -137,6 +137,13 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 20 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+using System.Security.Cryptography;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/chatroom/{chatName}")]
     public partial class ChatDisplayComponent : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -151,10 +158,8 @@ using Microsoft.AspNetCore.Identity;
     [Parameter]
     public string chatName {get; set;}
     public List<MessageModel> _messages { get; set; }
-    private bool _isChatting = true;
     private string _username;
-    private string _newMessage;
-    private List<string> chatNames = new List<string>();
+    private string _newMessage; 
     private string _hubUrl;
     private HubConnection _hubConnection;
     private int state;
@@ -163,6 +168,12 @@ using Microsoft.AspNetCore.Identity;
         
             _username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
             _messages = messageService.GetMessages(_username, chatName);
+            foreach(var mess in _messages)
+            {
+                mess.Body = encryptionService.DecryptStringFromBytes_Aes(Convert.FromBase64String(mess.Body),
+                                                           Convert.FromBase64String(mess.Key),
+                                                            Convert.FromBase64String(mess.IV));
+            }
             state = chatService.getState(chatName, _username);
             await Task.Delay(1);
 
@@ -179,6 +190,7 @@ using Microsoft.AspNetCore.Identity;
             await _hubConnection.StartAsync();
             if(state == 0)
             {
+
                 chatService.addOrRemove(chatName, _username, "1");
                 await SendAsync($"[Notice] {_username} joined chat room.");
             }
@@ -211,7 +223,14 @@ using Microsoft.AspNetCore.Identity;
         if (!string.IsNullOrWhiteSpace(message))
         {
             await _hubConnection.SendAsync("Broadcast", _username, message);
-            messageService.AddMessage(new MessageModel(_username, message, true), chatName);
+            string key, IV;
+            Aes myAes = Aes.Create();
+            byte[] newEncrypted = encryptionService.EncryptStringToBytes_Aes(message, myAes.Key, myAes.IV);
+            message = Convert.ToBase64String(newEncrypted);
+            key = Convert.ToBase64String(myAes.Key);
+            IV = Convert.ToBase64String(myAes.IV);
+            
+            messageService.AddMessage(new MessageModel(_username, message, true, key, IV), chatName);
             _newMessage = string.Empty;
         }
     }
@@ -220,6 +239,7 @@ using Microsoft.AspNetCore.Identity;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IEncryptionService encryptionService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageService messageService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }

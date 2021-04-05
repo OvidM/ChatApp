@@ -17,8 +17,10 @@
 @using Auth.Services
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Identity
+@using System.Security.Cryptography
 @inject UserManager<IdentityUser> userManager
 @inject IHttpContextAccessor _httpContextAccessor
 @inject NavigationManager navigationManager
 @inject IChatService chatService
 @inject IMessageService messageService
+@inject IEncryptionService encryptionService

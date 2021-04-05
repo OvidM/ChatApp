@@ -54,6 +54,12 @@ else
         
             _username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
             _messages = messageService.GetMessages(_username, chatName);
+            foreach(var mess in _messages)
+            {
+                mess.Body = encryptionService.DecryptStringFromBytes_Aes(Convert.FromBase64String(mess.Body),
+                                                           Convert.FromBase64String(mess.Key),
+                                                            Convert.FromBase64String(mess.IV));
+            }
             state = chatService.getState(chatName, _username);
             await Task.Delay(1);
 
@@ -70,6 +76,7 @@ else
             await _hubConnection.StartAsync();
             if(state == 0)
             {
+
                 chatService.addOrRemove(chatName, _username, "1");
                 await SendAsync($"[Notice] {_username} joined chat room.");
             }
@@ -102,7 +109,14 @@ else
         if (!string.IsNullOrWhiteSpace(message))
         {
             await _hubConnection.SendAsync("Broadcast", _username, message);
-            messageService.AddMessage(new MessageModel(_username, message, true), chatName);
+            string key, IV;
+            Aes myAes = Aes.Create();
+            byte[] newEncrypted = encryptionService.EncryptStringToBytes_Aes(message, myAes.Key, myAes.IV);
+            message = Convert.ToBase64String(newEncrypted);
+            key = Convert.ToBase64String(myAes.Key);
+            IV = Convert.ToBase64String(myAes.IV);
+            
+            messageService.AddMessage(new MessageModel(_username, message, true, key, IV), chatName);
             _newMessage = string.Empty;
         }
     }

@@ -30,10 +30,9 @@ namespace Auth.Services
             }
             return chats;
         }
-
         public string CreateChat(string chatName, string username)
         {
-            string query = "CREATE TABLE " + chatName + "(Field1 INTEGER PRIMARY KEY AUTOINCREMENT, Username char(20), Message char(100))";
+            string query = "CREATE TABLE " + chatName + "(Field1 INTEGER PRIMARY KEY AUTOINCREMENT, Username char(20), Message char(100), MessageKey char(100), MessageIV char(100))";
             using var con = new SQLiteConnection(@"URI=file:/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Messages.db");
             con.Open();
             using var cmd = new SQLiteCommand(query, con);
@@ -49,9 +48,12 @@ namespace Auth.Services
             con.Open();
             using var cmd1 = new SQLiteCommand(query, con);
             cmd1.ExecuteNonQuery();
-            query = "UPDATE AspNetUsers SET isIN" + chatName + " = 1 WHERE UserName = '" + username + "'";
+            query = "UPDATE AspNetUsers SET isIN" + chatName + " = 0;";
             using var cmd2 = new SQLiteCommand(query, con);
             cmd2.ExecuteNonQuery();
+            query = "UPDATE AspNetUsers SET isIN" + chatName + " = 1 WHERE UserName = '" + username + "'";
+            using var cmd3 = new SQLiteCommand(query, con);
+            cmd3.ExecuteNonQuery();
         }
 
         public void addOrRemove(string chatName, string username, string toWhat)
