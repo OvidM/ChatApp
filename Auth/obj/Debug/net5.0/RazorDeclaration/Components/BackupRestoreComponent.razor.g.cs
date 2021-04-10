@@ -153,7 +153,7 @@ using System.Security.Cryptography;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Components/BackupRestoreComponent.razor"
+#line 52 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Components/BackupRestoreComponent.razor"
       
     IBrowserFile file;
     string username;

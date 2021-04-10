@@ -346,39 +346,6 @@
         }
       },
       {
-        "HashCode": 1116916120,
-        "Kind": "Components.Component",
-        "Name": "Auth.Shared.LoginDisplay",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "LoginDisplay"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Shared.LoginDisplay"
-        }
-      },
-      {
-        "HashCode": -294125909,
-        "Kind": "Components.Component",
-        "Name": "Auth.Shared.LoginDisplay",
-        "AssemblyName": "Auth",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Auth.Shared.LoginDisplay"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Auth.Shared.LoginDisplay",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1237117608,
         "Kind": "Components.Component",
         "Name": "Auth.Shared.NavMenu",
@@ -408,6 +375,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Auth.Shared.NavMenu",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1116916120,
+        "Kind": "Components.Component",
+        "Name": "Auth.Shared.LoginDisplay",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "LoginDisplay"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Shared.LoginDisplay"
+        }
+      },
+      {
+        "HashCode": -294125909,
+        "Kind": "Components.Component",
+        "Name": "Auth.Shared.LoginDisplay",
+        "AssemblyName": "Auth",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Auth.Shared.LoginDisplay"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Auth.Shared.LoginDisplay",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -60799,11 +60799,6 @@
     {
       "FilePath": "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Pages/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Areas/Identity/Pages/Account/LogOut.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\LogOut.cshtml",
       "FileKind": "mvc"
     },
     {

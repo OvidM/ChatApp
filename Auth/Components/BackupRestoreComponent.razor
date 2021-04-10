@@ -1,12 +1,14 @@
 @page "/backup_page"
 @if (username == "OvidM")
 {
+    <MudText Typo="Typo.h5" Style="text-align: center;"><b>Here you cand backup or restore the database</b></MudText>
+    <hr />
     <div style="margin-top: 15px; margin-bottom: 15px;">
-    <MudButton HtmlTag="label" Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Filled.CloudUpload"
+        <MudButton HtmlTag="label" Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Filled.CloudUpload"
         @onclick="backupService.Backup">
-        Backup
-    </MudButton>
-    @if (backupService.IsBackedUp())
+            Backup Database
+        </MudButton>
+        @if (backupService.IsBackedUp())
         {
             <MudText Typo="Typo.h4" Color="Color.Success">Succesfully Backed Up</MudText>
         }
@@ -17,7 +19,7 @@
 
         <MudButton HtmlTag="label" Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Filled.CloudUpload"
         for="fileInput">
-            Upload Files
+            Restore Database
         </MudButton>
         @if (backupService.IsRestored())
         {

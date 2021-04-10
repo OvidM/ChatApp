@@ -158,7 +158,6 @@ using System.Security.Cryptography;
     public string username;
     private List<string> Chats = new List<string>();
     public string nameToRdir;
-    private bool toRedirect = false;
     protected override async Task OnInitializedAsync()
     {
         if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
@@ -166,6 +165,7 @@ using System.Security.Cryptography;
             username = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
             Chats = chatService.GetChats();
             foreach (var name in Chats) System.Console.WriteLine(name);
+            await Task.Delay(1);
         }
     }
     private void RedirectToDisplay(string chatName)
