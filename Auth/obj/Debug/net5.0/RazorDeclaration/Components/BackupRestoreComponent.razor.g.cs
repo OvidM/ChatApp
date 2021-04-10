@@ -4,7 +4,7 @@
 #pragma warning disable 0649
 #pragma warning disable 0169
 
-namespace Auth.Pages
+namespace Auth.Components
 {
     #line hidden
     using System.Collections.Generic;
@@ -144,14 +144,33 @@ using System.Security.Cryptography;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/backup_page")]
+    public partial class BackupRestoreComponent : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 50 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Components/BackupRestoreComponent.razor"
+      
+    IBrowserFile file;
+    string username;
+    protected override async Task OnInitializedAsync()
+    {
+        username = _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated ?
+        _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value : "NULL";
+        await Task.Delay(1);
+    }
+    private void UploadDB(InputFileChangeEventArgs e)
+    {
+        file = e.File;
+    }
+
+#line default
+#line hidden
+#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IBackupService backupService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IEncryptionService encryptionService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageService messageService { get; set; }

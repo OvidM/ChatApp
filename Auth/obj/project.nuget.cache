@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K6+bYrF9PHk2IPCRHb454Szs0tlj+CY+fJ7hdDzOh8Ltl0VtEBE2bJEXYVC8j9131A4Oq11RvOHqMx+iLIYaHQ==",
+  "dgSpecHash": "MKCpGgiklmiiclvZ07mlOU6barjsvTXQZ6J9hyizzMt0xdw9RF/XSTCrBgPq5dF+LtCzBbC2F4jP4OvPc8kThQ==",
   "success": true,
-  "projectFilePath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.csproj",
+  "projectFilePath": "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Auth.csproj",
   "expectedPackageFiles": [
     "/home/ovidiu/.nuget/packages/entityframework/6.3.0/entityframework.6.3.0.nupkg.sha512",
     "/home/ovidiu/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",

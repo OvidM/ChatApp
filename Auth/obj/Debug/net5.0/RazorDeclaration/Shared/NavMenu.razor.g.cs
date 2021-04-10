@@ -12,133 +12,133 @@ namespace Auth.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 1 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 2 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 3 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 4 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 5 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 6 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 7 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.SignalR.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 8 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 9 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 10 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Auth;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 11 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Auth.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 12 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using MudBlazor;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 13 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using System;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 14 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using System.Security.Claims;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 16 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 16 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using System.Data.SQLite;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 17 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 17 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Auth.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 18 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 18 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 19 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 19 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 20 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/_Imports.razor"
+#line 20 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/_Imports.razor"
 using System.Security.Cryptography;
 
 #line default
@@ -152,20 +152,27 @@ using System.Security.Cryptography;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Shared/NavMenu.razor"
+#line 31 "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Shared/NavMenu.razor"
        
     private bool collapseNavMenu = true;
-
+    string username;
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
+    protected override async Task OnInitializedAsync()
+    {
+        username = _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated ?
+        _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value : "NULL";
+        await Task.Delay(1);
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IBackupService backupService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IEncryptionService encryptionService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageService messageService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IChatService chatService { get; set; }

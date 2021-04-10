@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.csproj": {}
+    "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Auth.csproj": {}
   },
   "projects": {
-    "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.csproj": {
+    "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Auth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.csproj",
+        "projectUniqueName": "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Auth.csproj",
         "projectName": "Auth",
-        "projectPath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/Auth.csproj",
+        "projectPath": "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/Auth.csproj",
         "packagesPath": "/home/ovidiu/.nuget/packages/",
-        "outputPath": "/home/ovidiu/Documents/Projects/AlbertoBonnuci/ChatApp/Auth/obj/",
+        "outputPath": "/home/ovidiu/Documents/Projects/Final/ChatApp/Auth/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ovidiu/.nuget/NuGet/NuGet.Config"

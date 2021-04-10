@@ -1,0 +1,63 @@
+@page "/backup_page"
+@if (username == "OvidM")
+{
+    <div style="margin-top: 15px; margin-bottom: 15px;">
+    <MudButton HtmlTag="label" Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Filled.CloudUpload"
+        @onclick="backupService.Backup">
+        Backup
+    </MudButton>
+    @if (backupService.IsBackedUp())
+        {
+            <MudText Typo="Typo.h4" Color="Color.Success">Succesfully Backed Up</MudText>
+        }
+        <hr />
+    </div>
+    <div>
+        <InputFile id="fileInput" OnChange="UploadDB" hidden multiple accept=".db" />
+
+        <MudButton HtmlTag="label" Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Filled.CloudUpload"
+        for="fileInput">
+            Upload Files
+        </MudButton>
+        @if (backupService.IsRestored())
+        {
+            <MudText Typo="Typo.h4" Color="Color.Success">Succesfully Restored</MudText>
+            file = null;
+        }
+    </div>
+
+    if (file != null)
+    {
+        <MudList>
+    <MudListItem Style="float:left; display:inline;width: 22%" @key="@file">
+        <b>@file.Name</b> <code>@file.Size bytes</code>
+    </MudListItem>
+    <MudButton Style="display:inline; width: 10%;" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send"
+        Color="Color.Primary" @onclick="() => backupService.Restore(file.Name)">Restore</MudButton>
+</MudList>
+    }
+}
+else
+{
+    <MudText Typo="Typo.h1">UNAUTHORIZED</MudText>
+}
+
+
+
+
+
+
+@code{
+    IBrowserFile file;
+    string username;
+    protected override async Task OnInitializedAsync()
+    {
+        username = _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated ?
+        _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Name).Value : "NULL";
+        await Task.Delay(1);
+    }
+    private void UploadDB(InputFileChangeEventArgs e)
+    {
+        file = e.File;
+    }
+}
